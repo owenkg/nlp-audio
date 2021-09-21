@@ -5,6 +5,7 @@ import AudioCard from './box';
 
 const Results = (props) => {
     const [audios, setAudios] = useState([])
+    const [urls, setUrls] = useState([])
     const [loading, setLoading] = useState(false)
 
     const getAudios = async () => {
@@ -30,7 +31,9 @@ const Results = (props) => {
             )
             .then((response) => {
                 setAudios(response.data.data.Audios)
-                //console.log(response.data.data.Audios)
+                setUrls(response.data.data.URLs)
+                console.log(response.data.data.URLs)
+                console.log(response.data.data.Audios)
                 setLoading(false)
                 //console.log(`lenght ${audios.length}`)
             })
@@ -108,7 +111,7 @@ const Results = (props) => {
             <div className="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div className="row icon-boxes">
                     {audios.length > 0 ? audios.map((audio) => (   
-                        <AudioCard  name={audio.audio_name} audio_url={audio.audio_url}/>
+                        <AudioCard  name={audio} audio_url={urls}/>
                     ))
                     : <h2 style={{marginTop:'100px', color:'black'}}>No Audios Available!</h2> 
                     }
