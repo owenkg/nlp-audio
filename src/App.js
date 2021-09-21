@@ -6,7 +6,7 @@ import ImageUpload from "./Components/upload/image";
 import AudioUpload from "./Components/upload/audio";
 import Home from "./Components/home"
 import Tags from "./Components/tags";
-import Voice from "./Components/voice"
+//import Voice from "./Components/voice"
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 function App() {
@@ -38,10 +38,10 @@ function App() {
           component={AudioUpload}
         />
 
-        <Route
+        {/* <Route
           path="/record"
           component={Voice}
-        />
+        /> */}
 
       </PageWrapper>
       </DndProvider>

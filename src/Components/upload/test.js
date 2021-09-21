@@ -9,7 +9,7 @@ const AudioUpload = () => {
     const [uploadName, setUploadName] = useState("");
     const [uploadLink, setUploadLink] = useState("");
 
-    const handleChange = (e) => {
+    const handleAudio = (e) => {
         if (e.target.files[0]) {
             setAudio(e.target.files[0])
         }
@@ -35,12 +35,10 @@ const AudioUpload = () => {
                     .child(audio.name)
                     .getDownloadURL()
                     .then(url => {
-                        
                         console.log(url);
-                        
-                        console.log(uploadFile)
                         setUploadName(audio.name)
                         setUploadLink(url)
+                        //console.log(uploadFile)
                     })
             }
         )
@@ -52,7 +50,8 @@ const AudioUpload = () => {
             "/search/audios",
             {
                 audio_name: uploadName,
-                audio_url: uploadLink
+                audio_url: uploadLink,
+                audio_file: uploadFile
             })
             .then((response) => { console.log("success") })
             .catch((error) => {
@@ -65,15 +64,15 @@ const AudioUpload = () => {
         <>
             <div>
                 Audio Upload <br />
-                <input type="file" onChange={handleChange} placeholder="Select Audio File" multiple/>
-                <button onClick={handleSave}>Save</button>
+                <input type="file" onChange={handleAudio} placeholder="Select Audio File"/>
+                {/* <button onClick={handleSave}>Save</button> */}
             </div>
             <div>
             <input type="file" onChange={handleFile} placeholder="Select Audio Details File"/>
                 {/* <button onClick={handleSave}>Save</button> */}
             </div>
             <div>
-                {/* <button onClick={handleSave}>Save</button> */}
+            <button onClick={handleSave}>Save</button>
             </div>
             <br/>
             {uploadName === "" ?
