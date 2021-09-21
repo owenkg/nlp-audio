@@ -108,7 +108,7 @@ const Results = (props) => {
             <div className="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div className="row icon-boxes">
                     {audios.length > 0 ? audios.map((audio) => (   
-                        <AudioCard id={audio.id} name={audio.audio_name} audio_url={audio.audio_url}/>
+                        <AudioCard  name={audio.audio_name} audio_url={audio.audio_url}/>
                     ))
                     : <h2 style={{marginTop:'100px', color:'black'}}>No Audios Available!</h2> 
                     }

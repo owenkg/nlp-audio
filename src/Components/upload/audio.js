@@ -5,18 +5,12 @@ import { storage } from "../../utils/firebase"
 const AudioUpload = () => {
 
     const [audio, setAudio] = useState(null);
-    const [uploadFile, setUploadFile] = useState(null);
     const [uploadName, setUploadName] = useState("");
     const [uploadLink, setUploadLink] = useState("");
 
     const handleChange = (e) => {
         if (e.target.files[0]) {
             setAudio(e.target.files[0])
-        }
-    }
-    const handleFile = (e) => {
-        if (e.target.files[0]) {
-            setUploadFile(e.target.files[0])
         }
     }
 
@@ -35,10 +29,7 @@ const AudioUpload = () => {
                     .child(audio.name)
                     .getDownloadURL()
                     .then(url => {
-                        
                         console.log(url);
-                        
-                        console.log(uploadFile)
                         setUploadName(audio.name)
                         setUploadLink(url)
                     })
@@ -64,16 +55,9 @@ const AudioUpload = () => {
     return (
         <>
             <div>
-                Audio Upload <br />
-                <input type="file" onChange={handleChange} placeholder="Select Audio File" multiple/>
+                Hi all <br />
+                <input type="file" onChange={handleChange} multiple/>
                 <button onClick={handleSave}>Save</button>
-            </div>
-            <div>
-            <input type="file" onChange={handleFile} placeholder="Select Audio Details File"/>
-                {/* <button onClick={handleSave}>Save</button> */}
-            </div>
-            <div>
-                {/* <button onClick={handleSave}>Save</button> */}
             </div>
             <br/>
             {uploadName === "" ?
@@ -81,7 +65,6 @@ const AudioUpload = () => {
                 :
                 <div>
                     <p>Audio Name: {uploadName}</p>
-                    <p>Audio Details: {uploadFile}</p>
                     <p>Audio URL: {uploadLink}</p>
                     <button onClick={handleUpload}>Upload</button>
                 </div>
