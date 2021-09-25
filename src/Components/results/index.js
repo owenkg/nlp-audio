@@ -1,28 +1,34 @@
 import React , { useState, useEffect } from "react"
-import { API } from '../utils';
-import Header from './Layout/header';
+import { API } from '../../utils';
+import Header from '../Layout/header';
 import AudioCard from './box';
+import Loading from '../Layout/loading';
 
 const Results = (props) => {
+    /* const [data, setData] = useState([]) */
     const [audios, setAudios] = useState([])
     const [urls, setUrls] = useState([])
     const [loading, setLoading] = useState(false)
+    
 
     const getAudios = async () => {
+        setLoading(true)
         await API.get('/search/audios')
+            
             .then((response) => {
-                setAudios(response.data.data.audios)
-                console.log(response.data.data.audios)
+                setAudios(response.data.data)
+                //console.log(response.data.data.audios)
                 setLoading(false)
                 //console.log(`lenght ${audios.length}`)
             })
             .catch((error)=>{
-                console.log(`error occurred ${error}`)
+                //console.log(`error occurred ${error}`)
                 setLoading(false)
             })
     }
 
     const getAudiosByTag = async () => {
+        /* setLoading(true) */
         await API.post(
             '/search_tag',
             {
@@ -105,7 +111,41 @@ const Results = (props) => {
     },[])
 
     return(
+        <>
+        {loading ? 
+        <Loading/>
+        :
         <div>
+            <Header title={'Results'} />
+            <section id="hero" className="d-flex align-items-center">
+            <div className="container position-relative" data-aos="fade-up" data-aos-delay="100">
+                <div className="row icon-boxes">
+                    {audios.length > 0 ? audios.map((audio) => (   
+                        <div>
+                            {audio['transcripts'].length > 0 ? 
+                            audio['transcripts'].map((item) => (
+                                <AudioCard  name={item.filename} audio_url={item.url}/>
+                            ))
+                        :
+                        <h2 style={{marginTop:'100px', color:'black'}}>No Audios Available!</h2> 
+                        }
+                        </div>
+                    ))
+                    : <h2 style={{marginTop:'100px', color:'black'}}>No Audios Available!</h2> 
+                    }
+                </div>
+            </div>
+            </section>
+        </div>
+        }
+        </>
+    )
+
+}
+
+export default Results;
+
+{/* <div>
             <Header title={'Results'} />
             <section id="hero" className="d-flex align-items-center">
             <div className="container position-relative" data-aos="fade-up" data-aos-delay="100">
@@ -117,10 +157,5 @@ const Results = (props) => {
                     }
                 </div>
             </div>
-            </section>
-        </div>
-    )
-
-}
-
-export default Results;
+            </section> <AudioCard  name={audio} audio_url={urls}/>
+        </div> */}

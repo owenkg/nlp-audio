@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Results from "./Components/Results";
+import {NotificationContainer} from 'react-notifications';
 import PageWrapper from "./Components/Layout/PageWrapper";
-import ImageUpload from "./Components/upload/image";
-import AudioUpload from "./Components/upload/audio";
+import Results from "./Components/results";
+import Upload from "./Components/upload";
 import Home from "./Components/home"
 import Tags from "./Components/tags";
 //import Voice from "./Components/voice"
@@ -14,6 +14,7 @@ function App() {
     <Router>
       <DndProvider backend={HTML5Backend}>
       <PageWrapper>
+        <NotificationContainer>
 
         <Route
           exact={true}
@@ -35,14 +36,14 @@ function App() {
 
         <Route
           path="/upload"
-          component={AudioUpload}
+          component={Upload}
         />
 
         {/* <Route
           path="/record"
           component={Voice}
         /> */}
-
+      </NotificationContainer>
       </PageWrapper>
       </DndProvider>
     </Router>
