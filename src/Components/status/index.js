@@ -14,7 +14,7 @@ const Status = (props) => {
     return (
         <div>
             {
-                props.variant === "success" ?
+                props.location.state.variant === "success" ?
                     <Alert show={show} variant={props.variant}>
                         <Alert.Heading>Success</Alert.Heading>
                         <p>
@@ -28,7 +28,7 @@ const Status = (props) => {
                         </div>
                     </Alert>
                     :
-                    props.variant === "danger" ?
+                    props.location.state.variant === "danger" ?
 
                     <Alert variant="danger" show={show}>
                         <Alert.Heading>Error!</Alert.Heading>
@@ -43,7 +43,7 @@ const Status = (props) => {
                         </div>
                     </Alert>
                     :
-                    <Alert variant="danger" show={show}>
+                    <Alert variant="secondary" show={show}>
                         <Alert.Heading>Error!</Alert.Heading>
                         <p>
                             Not Authorised !

@@ -38,8 +38,8 @@ const Results = (props) => {
             .then((response) => {
                 setAudios(response.data.data.Audios)
                 setUrls(response.data.data.URLs)
-                console.log(response.data.data.URLs)
-                console.log(response.data.data.Audios)
+                //console.log(response.data.data.URLs)
+                //console.log(response.data.data.Audios)
                 setLoading(false)
                 //console.log(`lenght ${audios.length}`)
             })

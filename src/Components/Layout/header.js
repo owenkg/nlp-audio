@@ -21,6 +21,7 @@ const Header = (props) => {
                         <ul>
                             <li><a className="nav-link scrollto active" href="/">Search</a></li>
                             <li><a className="nav-link scrollto" href="/tags">Tags</a></li>
+                            <li><a className="nav-link scrollto" href="/upload">Upload</a></li>
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle"></i>
                     </nav>
