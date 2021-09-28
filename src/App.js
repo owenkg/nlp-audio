@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import PageWrapper from "./Components/Layout/PageWrapper";
 import Results from "./Components/results";
 import Upload from "./Components/upload";
