@@ -29,7 +29,7 @@ const Home = () => {
             return (
                 <Redirect to={{
                     pathname: "/results",
-                    search: `search_?topic=name+${searchLink}_id`,
+                    /* search: `search_?topic=name+${searchLink}_id`, */
                     state: { topic_name: searchTopic }
                 }} />
             )
