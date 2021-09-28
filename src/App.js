@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { HashRouter, Link } from "react-router-dom";
-import { Route, Switch } from "react-router";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Switch } from "react-router";
 import PageWrapper from "./Components/Layout/PageWrapper";
 import Results from "./Components/results";
 import Upload from "./Components/upload";
@@ -12,44 +12,47 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 //import Voice from "./Components/voice"
 function App() {
   return (
-    <HashRouter>
+    <Router>
       <DndProvider backend={HTML5Backend}>
         <PageWrapper>
-          <Switch >
 
-            <Route path="/" component={Home} />
+          <Switch>
+            <Route
+              /* exact={true} */
+              exact path="/"
+              component={Home}
+            />
 
             <Route
-              exact={true}
-              path="/results"
+              /* exact={true} */
+              exact path="/results"
               component={Results}
             />
 
             <Route
-              path="/tags"
+              exact path="/tags"
               component={Tags}
             />
 
 
             <Route
-              path="/upload"
+              exact path="/upload"
               component={Upload}
             />
 
             <Route
-              path="/status"
+              eaxct path="/status"
               component={Status}
             />
 
             {/* <Route
           path="/record"
           component={Voice}
-          /> */}
-
+        /> */}
           </Switch>
         </PageWrapper>
       </DndProvider>
-    </HashRouter>
+    </Router>
   );
 }
 

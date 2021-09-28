@@ -49,6 +49,7 @@ const Tags = () => {
       .then((response) => {
 
         setTags(response.data.data.tags);
+        console.log(response.data.data.tags);
         setLoading(false);
 
       })

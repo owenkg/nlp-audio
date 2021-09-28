@@ -2,17 +2,18 @@ import React from 'react';
 import { Badge } from 'react-bootstrap';
 import { useDrag } from 'react-dnd';
 
-const Tag = ({name, index, id, tag_type, onDropTag}) => {
+const Tag = ({ name, index, id, tag_type, onDropTag }) => {
 
     const [{ isDragging }, dragRef] = useDrag({
-        
-        item: {
-            type: tag_type,
+
+
+        type: tag_type,
+        item: () => ({
             index,
             id,
             name
-        },
-        end:  (item, monitor) => {
+        }),
+        end: (item, monitor) => {
             const dropResult = monitor.getDropResult()
             const didDrop = monitor.didDrop()
 
@@ -23,14 +24,14 @@ const Tag = ({name, index, id, tag_type, onDropTag}) => {
             //console.log(didDrop)
             //console.log(item)
         },
-        collect: ( monitor ) => ({
-            isDragging: monitor.isDragging() 
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging()
         })
     })
 
-    return (
-        <Badge draggable className="tag" pill bg="secondary" ref={dragRef}>{name}</Badge>
-    )
+return (
+    <Badge draggable className="tag" pill bg="secondary" ref={dragRef}>{name}</Badge>
+)
 
 }
 
