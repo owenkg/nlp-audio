@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { HashRouter, IndexRoute, Route, Link } from "react-router-dom";
+import { HashRouter, Link } from "react-router-dom";
+import { Route, Switch } from "react-router";
 import PageWrapper from "./Components/Layout/PageWrapper";
 import Results from "./Components/results";
 import Upload from "./Components/upload";
@@ -14,9 +15,9 @@ function App() {
     <HashRouter>
       <DndProvider backend={HTML5Backend}>
         <PageWrapper>
-          <Route path="/" >
+          <Switch >
 
-            <IndexRoute component={Home} />
+            <Route path="/" component={Home} />
 
             <Route
               exact={true}
@@ -45,7 +46,7 @@ function App() {
           component={Voice}
           /> */}
 
-          </Route>
+          </Switch>
         </PageWrapper>
       </DndProvider>
     </HashRouter>
