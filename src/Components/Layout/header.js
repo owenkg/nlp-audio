@@ -19,9 +19,9 @@ const Header = (props) => {
 
                     <nav id="navbar" className="navbar">
                         <ul>
-                            <li><a className="nav-link scrollto active" href="/">Search</a></li>
-                            <li><a className="nav-link scrollto" href="/tags">Tags</a></li>
-                            <li><a className="nav-link scrollto" href="/upload">Upload</a></li>
+                            <li><Link className="nav-link scrollto active" to="/">Search</Link></li>
+                            <li><Link className="nav-link scrollto" to="/tags">Tags</Link></li>
+                            <li><Link className="nav-link scrollto" to="/upload">Upload</Link></li>
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle"></i>
                     </nav>
