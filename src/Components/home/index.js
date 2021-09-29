@@ -20,7 +20,7 @@ const Home = () => {
             return (
                 <Redirect to={{
                     pathname: "/results",
-                    search: `search_?tag=name+${searchLink}_id`,
+                    /* search: `search_?tag=name+${searchLink}_id`, */
                     state: { tag_name: searchTag }
                 }} />
             )
@@ -149,7 +149,7 @@ const Home = () => {
 
                     <div className="buttonBox">
                         <button type="button" onClick={submitSearchTerm}>Search by Text</button>
-                        <button type="button" onClick={submitTopic} >Search by Topic</button>
+                        <button type="button" onClick={submitTopic} disabled>Search by Topic</button>
                     </div>
                 </div>
                 :
