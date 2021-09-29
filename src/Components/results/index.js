@@ -28,7 +28,7 @@ const Results = (props) => {
     }
 
     const getAudiosByTag = async () => {
-        /* setLoading(true) */
+        setLoading(true)
         await API.post(
             '/search_tag',
             {
@@ -50,6 +50,7 @@ const Results = (props) => {
     }
 
     const getAudiosByTopic = async () => {
+        setLoading(true)
         await API.post(
             '/search_topic',
             {
@@ -69,6 +70,7 @@ const Results = (props) => {
     }
 
     const getAudiosBySelected = async () => {
+        setLoading(true)
         await API.post(
             '/search_tag',
             {
